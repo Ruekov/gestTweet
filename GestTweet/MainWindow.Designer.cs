@@ -34,15 +34,6 @@
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageLoadedTweets = new System.Windows.Forms.TabPage();
             this.dataGridViewMain = new System.Windows.Forms.DataGridView();
-            this.panelRight = new System.Windows.Forms.Panel();
-            this.groupBoxFromArchive = new System.Windows.Forms.GroupBox();
-            this.ButtonLoadArchiveJS = new System.Windows.Forms.Button();
-            this.ButtonLoadFromZIP = new System.Windows.Forms.Button();
-            this.menuStripMain = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStripMain = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusNumTweets = new System.Windows.Forms.ToolStripStatusLabel();
             this.sourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entitiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.geoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +43,15 @@
             this.createdAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSrcTweets = new System.Windows.Forms.BindingSource(this.components);
+            this.panelRight = new System.Windows.Forms.Panel();
+            this.groupBoxFromArchive = new System.Windows.Forms.GroupBox();
+            this.ButtonLoadArchiveJS = new System.Windows.Forms.Button();
+            this.ButtonLoadFromZIP = new System.Windows.Forms.Button();
+            this.menuStripMain = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStripMain = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusNumTweets = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -60,11 +60,11 @@
             this.tabControlMain.SuspendLayout();
             this.tabPageLoadedTweets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSrcTweets)).BeginInit();
             this.panelRight.SuspendLayout();
             this.groupBoxFromArchive.SuspendLayout();
             this.menuStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSrcTweets)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -134,6 +134,63 @@
             this.dataGridViewMain.Size = new System.Drawing.Size(778, 383);
             this.dataGridViewMain.TabIndex = 0;
             // 
+            // sourceDataGridViewTextBoxColumn
+            // 
+            this.sourceDataGridViewTextBoxColumn.DataPropertyName = "Source";
+            this.sourceDataGridViewTextBoxColumn.HeaderText = "Source";
+            this.sourceDataGridViewTextBoxColumn.Name = "sourceDataGridViewTextBoxColumn";
+            // 
+            // entitiesDataGridViewTextBoxColumn
+            // 
+            this.entitiesDataGridViewTextBoxColumn.DataPropertyName = "Entities";
+            this.entitiesDataGridViewTextBoxColumn.HeaderText = "Entities";
+            this.entitiesDataGridViewTextBoxColumn.Name = "entitiesDataGridViewTextBoxColumn";
+            this.entitiesDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // geoDataGridViewTextBoxColumn
+            // 
+            this.geoDataGridViewTextBoxColumn.DataPropertyName = "Geo";
+            this.geoDataGridViewTextBoxColumn.HeaderText = "Geo";
+            this.geoDataGridViewTextBoxColumn.Name = "geoDataGridViewTextBoxColumn";
+            this.geoDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idStrDataGridViewTextBoxColumn
+            // 
+            this.idStrDataGridViewTextBoxColumn.DataPropertyName = "IdStr";
+            this.idStrDataGridViewTextBoxColumn.HeaderText = "IdStr";
+            this.idStrDataGridViewTextBoxColumn.Name = "idStrDataGridViewTextBoxColumn";
+            // 
+            // textDataGridViewTextBoxColumn
+            // 
+            this.textDataGridViewTextBoxColumn.DataPropertyName = "Text";
+            this.textDataGridViewTextBoxColumn.HeaderText = "Text";
+            this.textDataGridViewTextBoxColumn.MinimumWidth = 300;
+            this.textDataGridViewTextBoxColumn.Name = "textDataGridViewTextBoxColumn";
+            this.textDataGridViewTextBoxColumn.Width = 300;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // createdAtDataGridViewTextBoxColumn
+            // 
+            this.createdAtDataGridViewTextBoxColumn.DataPropertyName = "CreatedAt";
+            this.createdAtDataGridViewTextBoxColumn.HeaderText = "CreatedAt";
+            this.createdAtDataGridViewTextBoxColumn.Name = "createdAtDataGridViewTextBoxColumn";
+            // 
+            // userDataGridViewTextBoxColumn
+            // 
+            this.userDataGridViewTextBoxColumn.DataPropertyName = "User";
+            this.userDataGridViewTextBoxColumn.HeaderText = "User";
+            this.userDataGridViewTextBoxColumn.Name = "userDataGridViewTextBoxColumn";
+            this.userDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // bindingSrcTweets
+            // 
+            this.bindingSrcTweets.DataSource = typeof(GestTweet.Classes.Tweet);
+            // 
             // panelRight
             // 
             this.panelRight.Controls.Add(this.groupBoxFromArchive);
@@ -197,7 +254,7 @@
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -216,63 +273,6 @@
             this.toolStripStatusNumTweets.Name = "toolStripStatusNumTweets";
             this.toolStripStatusNumTweets.Size = new System.Drawing.Size(71, 17);
             this.toolStripStatusNumTweets.Text = "NumTweets";
-            // 
-            // sourceDataGridViewTextBoxColumn
-            // 
-            this.sourceDataGridViewTextBoxColumn.DataPropertyName = "Source";
-            this.sourceDataGridViewTextBoxColumn.HeaderText = "Source";
-            this.sourceDataGridViewTextBoxColumn.Name = "sourceDataGridViewTextBoxColumn";
-            // 
-            // entitiesDataGridViewTextBoxColumn
-            // 
-            this.entitiesDataGridViewTextBoxColumn.DataPropertyName = "Entities";
-            this.entitiesDataGridViewTextBoxColumn.HeaderText = "Entities";
-            this.entitiesDataGridViewTextBoxColumn.Name = "entitiesDataGridViewTextBoxColumn";
-            this.entitiesDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // geoDataGridViewTextBoxColumn
-            // 
-            this.geoDataGridViewTextBoxColumn.DataPropertyName = "Geo";
-            this.geoDataGridViewTextBoxColumn.HeaderText = "Geo";
-            this.geoDataGridViewTextBoxColumn.Name = "geoDataGridViewTextBoxColumn";
-            this.geoDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // idStrDataGridViewTextBoxColumn
-            // 
-            this.idStrDataGridViewTextBoxColumn.DataPropertyName = "IdStr";
-            this.idStrDataGridViewTextBoxColumn.HeaderText = "IdStr";
-            this.idStrDataGridViewTextBoxColumn.Name = "idStrDataGridViewTextBoxColumn";
-            // 
-            // textDataGridViewTextBoxColumn
-            // 
-            this.textDataGridViewTextBoxColumn.DataPropertyName = "Text";
-            this.textDataGridViewTextBoxColumn.HeaderText = "Text";
-            this.textDataGridViewTextBoxColumn.MinimumWidth = 300;
-            this.textDataGridViewTextBoxColumn.Name = "textDataGridViewTextBoxColumn";
-            this.textDataGridViewTextBoxColumn.Width = 300;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // createdAtDataGridViewTextBoxColumn
-            // 
-            this.createdAtDataGridViewTextBoxColumn.DataPropertyName = "CreatedAt";
-            this.createdAtDataGridViewTextBoxColumn.HeaderText = "CreatedAt";
-            this.createdAtDataGridViewTextBoxColumn.Name = "createdAtDataGridViewTextBoxColumn";
-            // 
-            // userDataGridViewTextBoxColumn
-            // 
-            this.userDataGridViewTextBoxColumn.DataPropertyName = "User";
-            this.userDataGridViewTextBoxColumn.HeaderText = "User";
-            this.userDataGridViewTextBoxColumn.Name = "userDataGridViewTextBoxColumn";
-            this.userDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // bindingSrcTweets
-            // 
-            this.bindingSrcTweets.DataSource = typeof(GestTweet.Classes.Tweet);
             // 
             // MainWindow
             // 
@@ -294,13 +294,13 @@
             this.tabControlMain.ResumeLayout(false);
             this.tabPageLoadedTweets.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSrcTweets)).EndInit();
             this.panelRight.ResumeLayout(false);
             this.groupBoxFromArchive.ResumeLayout(false);
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             this.statusStripMain.ResumeLayout(false);
             this.statusStripMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSrcTweets)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
