@@ -15,8 +15,8 @@ namespace GestTweet.Classes
     public class Settings
     {
 
-        private Settings m_Instance;
-        private String m_File;
+        private static Settings m_Instance;
+        private static String m_File;
 
         public struct ApiTwitter
         {
@@ -28,15 +28,16 @@ namespace GestTweet.Classes
 
 
         public ApiTwitter UserAccesAPI;
+        public string username;
 
-        public Settings Instance
+        public static Settings Instance
         {
 
             get
             {
-                if (this.m_Instance == null)
-                    this.m_Instance = new Settings();
-                return this.m_Instance;
+                if (m_Instance == null)
+                    m_Instance = new Settings();
+                return m_Instance;
             }
 
         }
@@ -44,7 +45,7 @@ namespace GestTweet.Classes
         public Settings()
         {
 
-            this.m_File = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Application.ProductName);
+            m_File = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Application.ProductName);
 
             if (!System.IO.Directory.Exists(m_File))
             {
@@ -58,7 +59,7 @@ namespace GestTweet.Classes
 
         }
 
-        public void Load()
+        public static void Load()
         {
 
             Settings _Settings = new Settings();
@@ -92,14 +93,15 @@ namespace GestTweet.Classes
 
             }
 
-            this.Instance.UserAccesAPI.ConsumerKey = _Settings.UserAccesAPI.ConsumerKey;
-            this.Instance.UserAccesAPI.ConsumerSecret = _Settings.UserAccesAPI.ConsumerSecret;
-            this.Instance.UserAccesAPI.OAuthToken = _Settings.UserAccesAPI.OAuthToken;
-            this.Instance.UserAccesAPI.OAuthTokenSecret = _Settings.UserAccesAPI.OAuthTokenSecret;
+            Instance.UserAccesAPI.ConsumerKey = _Settings.UserAccesAPI.ConsumerKey;
+            Instance.UserAccesAPI.ConsumerSecret = _Settings.UserAccesAPI.ConsumerSecret;
+            Instance.UserAccesAPI.OAuthToken = _Settings.UserAccesAPI.OAuthToken;
+            Instance.UserAccesAPI.OAuthTokenSecret = _Settings.UserAccesAPI.OAuthTokenSecret;
+            Instance.username = _Settings.username;
 
         }
 
-        public void Save()
+        public static void Save()
         {
 
             using (System.IO.FileStream fs = new System.IO.FileStream(m_File, System.IO.FileMode.Create))
@@ -109,7 +111,7 @@ namespace GestTweet.Classes
                 {
 
                     XmlSerializer xs = new XmlSerializer(typeof(Settings));
-                    xs.Serialize(writer, this.Instance);
+                    xs.Serialize(writer, Instance);
 
                 }
 

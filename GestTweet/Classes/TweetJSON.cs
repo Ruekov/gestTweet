@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using LinqToTwitter;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,21 @@ namespace GestTweet.Classes
 
         [JsonProperty("user")]
         public User User { get; set; }
+
+        public static explicit operator Tweet(Status b)  // explicit byte to digit conversion operator
+        {
+            Tweet d = new Tweet();  // explicit conversion
+
+            d.CreatedAt = b.CreatedAt.ToString();
+            d.Text = b.Text;
+
+            return d;
+        }
+
+        public static explicit operator Tweet(List<Status> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class Geo

@@ -79,7 +79,64 @@ namespace GestTweet
         private void Form1_Load(object sender, EventArgs e)
         {
             this.toolStripStatusNumTweets.Text = "";
+
+            if (Settings.Instance.username != "")
+            {
+                this.buttonStartAPI.Enabled = false;
+            }
+
         }
 
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            userAPI window = new userAPI();
+
+            window.ShowDialog();
+
+            if (window.DialogResult == DialogResult.OK)
+            {
+
+                try
+                {
+
+                    this.bindingSrcTweets.DataSource = TweetAPI.GetFromAPI();
+
+                    this.toolStripStatusNumTweets.Text = "Loaded tweets: " + this.bindingSrcTweets.Count.ToString();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+
+            }
+        }
+
+        private void buttonStartAPI_Click(object sender, EventArgs e)
+        {
+            if (Settings.Instance.username != "") {
+
+                try
+                {
+
+                    this.bindingSrcTweets.DataSource = TweetAPI.GetFromAPI();
+
+                    this.toolStripStatusNumTweets.Text = "Loaded tweets: " + this.bindingSrcTweets.Count.ToString();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+
+            }
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            userAPI window = new userAPI();
+            window.ShowDialog();
+
+        }
     }
 }
