@@ -34,20 +34,20 @@
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageLoadedTweets = new System.Windows.Forms.TabPage();
             this.dataGridViewMain = new System.Windows.Forms.DataGridView();
-            this.panelRight = new System.Windows.Forms.Panel();
-            this.groupBoxFromArchive = new System.Windows.Forms.GroupBox();
-            this.ButtonLoadArchiveJS = new System.Windows.Forms.Button();
-            this.ButtonLoadFromZIP = new System.Windows.Forms.Button();
+            this.tabStads = new System.Windows.Forms.TabPage();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadTweetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fromjsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fromzipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fromAPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadAPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fromPreviousLoadsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusNumTweets = new System.Windows.Forms.ToolStripStatusLabel();
-            this.groupBoxAPI = new System.Windows.Forms.GroupBox();
-            this.buttonSettings = new System.Windows.Forms.Button();
-            this.buttonStartAPI = new System.Windows.Forms.Button();
-            this.tabStads = new System.Windows.Forms.TabPage();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entitiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.geoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,23 +57,16 @@
             this.createdAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSrcTweets = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBoxPrevious = new System.Windows.Forms.GroupBox();
-            this.buttonOpenPrevious = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPageLoadedTweets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
-            this.panelRight.SuspendLayout();
-            this.groupBoxFromArchive.SuspendLayout();
             this.menuStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
-            this.groupBoxAPI.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSrcTweets)).BeginInit();
-            this.groupBoxPrevious.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -88,7 +81,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panelRight);
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
+            this.splitContainer1.Panel2Collapsed = true;
             this.splitContainer1.Size = new System.Drawing.Size(1008, 415);
             this.splitContainer1.SplitterDistance = 792;
             this.splitContainer1.TabIndex = 4;
@@ -99,7 +93,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(792, 415);
+            this.panel1.Size = new System.Drawing.Size(1008, 415);
             this.panel1.TabIndex = 0;
             // 
             // tabControlMain
@@ -110,7 +104,7 @@
             this.tabControlMain.Location = new System.Drawing.Point(0, 0);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(792, 415);
+            this.tabControlMain.Size = new System.Drawing.Size(1008, 415);
             this.tabControlMain.TabIndex = 4;
             // 
             // tabPageLoadedTweets
@@ -119,7 +113,7 @@
             this.tabPageLoadedTweets.Location = new System.Drawing.Point(4, 22);
             this.tabPageLoadedTweets.Name = "tabPageLoadedTweets";
             this.tabPageLoadedTweets.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLoadedTweets.Size = new System.Drawing.Size(784, 389);
+            this.tabPageLoadedTweets.Size = new System.Drawing.Size(1000, 389);
             this.tabPageLoadedTweets.TabIndex = 0;
             this.tabPageLoadedTweets.Text = "Loaded Tweets";
             this.tabPageLoadedTweets.UseVisualStyleBackColor = true;
@@ -144,57 +138,24 @@
             this.dataGridViewMain.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewMain.Name = "dataGridViewMain";
             this.dataGridViewMain.ReadOnly = true;
-            this.dataGridViewMain.Size = new System.Drawing.Size(778, 383);
+            this.dataGridViewMain.Size = new System.Drawing.Size(994, 383);
             this.dataGridViewMain.TabIndex = 0;
             // 
-            // panelRight
+            // tabStads
             // 
-            this.panelRight.Controls.Add(this.groupBoxPrevious);
-            this.panelRight.Controls.Add(this.groupBoxAPI);
-            this.panelRight.Controls.Add(this.groupBoxFromArchive);
-            this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRight.Location = new System.Drawing.Point(0, 0);
-            this.panelRight.MaximumSize = new System.Drawing.Size(211, 415);
-            this.panelRight.MinimumSize = new System.Drawing.Size(211, 415);
-            this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(211, 415);
-            this.panelRight.TabIndex = 0;
-            // 
-            // groupBoxFromArchive
-            // 
-            this.groupBoxFromArchive.Controls.Add(this.ButtonLoadArchiveJS);
-            this.groupBoxFromArchive.Controls.Add(this.ButtonLoadFromZIP);
-            this.groupBoxFromArchive.Location = new System.Drawing.Point(19, 22);
-            this.groupBoxFromArchive.Name = "groupBoxFromArchive";
-            this.groupBoxFromArchive.Size = new System.Drawing.Size(170, 100);
-            this.groupBoxFromArchive.TabIndex = 4;
-            this.groupBoxFromArchive.TabStop = false;
-            this.groupBoxFromArchive.Text = "From Archive";
-            // 
-            // ButtonLoadArchiveJS
-            // 
-            this.ButtonLoadArchiveJS.Location = new System.Drawing.Point(48, 31);
-            this.ButtonLoadArchiveJS.Name = "ButtonLoadArchiveJS";
-            this.ButtonLoadArchiveJS.Size = new System.Drawing.Size(75, 23);
-            this.ButtonLoadArchiveJS.TabIndex = 1;
-            this.ButtonLoadArchiveJS.Text = ".JS";
-            this.ButtonLoadArchiveJS.UseVisualStyleBackColor = true;
-            this.ButtonLoadArchiveJS.Click += new System.EventHandler(this.buttonJS_Click);
-            // 
-            // ButtonLoadFromZIP
-            // 
-            this.ButtonLoadFromZIP.Location = new System.Drawing.Point(48, 60);
-            this.ButtonLoadFromZIP.Name = "ButtonLoadFromZIP";
-            this.ButtonLoadFromZIP.Size = new System.Drawing.Size(75, 23);
-            this.ButtonLoadFromZIP.TabIndex = 2;
-            this.ButtonLoadFromZIP.Text = ".ZIP";
-            this.ButtonLoadFromZIP.UseVisualStyleBackColor = true;
-            this.ButtonLoadFromZIP.Click += new System.EventHandler(this.buttonZIP_Click);
+            this.tabStads.Location = new System.Drawing.Point(4, 22);
+            this.tabStads.Name = "tabStads";
+            this.tabStads.Padding = new System.Windows.Forms.Padding(3);
+            this.tabStads.Size = new System.Drawing.Size(1000, 389);
+            this.tabStads.TabIndex = 1;
+            this.tabStads.Text = "Stadistics";
+            this.tabStads.UseVisualStyleBackColor = true;
             // 
             // menuStripMain
             // 
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.loadTweetsToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
             this.menuStripMain.Size = new System.Drawing.Size(1008, 24);
@@ -210,12 +171,74 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // loadTweetsToolStripMenuItem
+            // 
+            this.loadTweetsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fromjsToolStripMenuItem,
+            this.fromzipToolStripMenuItem,
+            this.fromAPIToolStripMenuItem,
+            this.fromPreviousLoadsToolStripMenuItem});
+            this.loadTweetsToolStripMenuItem.Name = "loadTweetsToolStripMenuItem";
+            this.loadTweetsToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.loadTweetsToolStripMenuItem.Text = "Load tweets";
+            // 
+            // fromjsToolStripMenuItem
+            // 
+            this.fromjsToolStripMenuItem.Name = "fromjsToolStripMenuItem";
+            this.fromjsToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.fromjsToolStripMenuItem.Text = "From .js";
+            this.fromjsToolStripMenuItem.Click += new System.EventHandler(this.fromjsToolStripMenuItem_Click);
+            // 
+            // fromzipToolStripMenuItem
+            // 
+            this.fromzipToolStripMenuItem.Name = "fromzipToolStripMenuItem";
+            this.fromzipToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.fromzipToolStripMenuItem.Text = "From .zip";
+            this.fromzipToolStripMenuItem.Click += new System.EventHandler(this.fromzipToolStripMenuItem_Click);
+            // 
+            // fromAPIToolStripMenuItem
+            // 
+            this.fromAPIToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsToolStripMenuItem1,
+            this.loadAPIToolStripMenuItem});
+            this.fromAPIToolStripMenuItem.Name = "fromAPIToolStripMenuItem";
+            this.fromAPIToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.fromAPIToolStripMenuItem.Text = "API";
+            // 
+            // settingsToolStripMenuItem1
+            // 
+            this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
+            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem1.Text = "Settings";
+            this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem1_Click);
+            // 
+            // loadAPIToolStripMenuItem
+            // 
+            this.loadAPIToolStripMenuItem.Name = "loadAPIToolStripMenuItem";
+            this.loadAPIToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadAPIToolStripMenuItem.Text = "Load API";
+            this.loadAPIToolStripMenuItem.Click += new System.EventHandler(this.loadAPIToolStripMenuItem_Click);
+            // 
+            // fromPreviousLoadsToolStripMenuItem
+            // 
+            this.fromPreviousLoadsToolStripMenuItem.Name = "fromPreviousLoadsToolStripMenuItem";
+            this.fromPreviousLoadsToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.fromPreviousLoadsToolStripMenuItem.Text = "From previous loads";
+            this.fromPreviousLoadsToolStripMenuItem.Click += new System.EventHandler(this.fromPreviousLoadsToolStripMenuItem_Click);
             // 
             // statusStripMain
             // 
@@ -232,54 +255,6 @@
             this.toolStripStatusNumTweets.Name = "toolStripStatusNumTweets";
             this.toolStripStatusNumTweets.Size = new System.Drawing.Size(71, 17);
             this.toolStripStatusNumTweets.Text = "NumTweets";
-            // 
-            // groupBoxAPI
-            // 
-            this.groupBoxAPI.Controls.Add(this.buttonStartAPI);
-            this.groupBoxAPI.Controls.Add(this.buttonSettings);
-            this.groupBoxAPI.Location = new System.Drawing.Point(19, 128);
-            this.groupBoxAPI.Name = "groupBoxAPI";
-            this.groupBoxAPI.Size = new System.Drawing.Size(170, 93);
-            this.groupBoxAPI.TabIndex = 5;
-            this.groupBoxAPI.TabStop = false;
-            this.groupBoxAPI.Text = "From API";
-            // 
-            // buttonSettings
-            // 
-            this.buttonSettings.Location = new System.Drawing.Point(48, 28);
-            this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.Size = new System.Drawing.Size(75, 23);
-            this.buttonSettings.TabIndex = 0;
-            this.buttonSettings.Text = "Settings";
-            this.buttonSettings.UseVisualStyleBackColor = true;
-            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
-            // 
-            // buttonStartAPI
-            // 
-            this.buttonStartAPI.Location = new System.Drawing.Point(48, 57);
-            this.buttonStartAPI.Name = "buttonStartAPI";
-            this.buttonStartAPI.Size = new System.Drawing.Size(75, 23);
-            this.buttonStartAPI.TabIndex = 1;
-            this.buttonStartAPI.Text = "StartAPI";
-            this.buttonStartAPI.UseVisualStyleBackColor = true;
-            this.buttonStartAPI.Click += new System.EventHandler(this.buttonStartAPI_Click);
-            // 
-            // tabStads
-            // 
-            this.tabStads.Location = new System.Drawing.Point(4, 22);
-            this.tabStads.Name = "tabStads";
-            this.tabStads.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStads.Size = new System.Drawing.Size(784, 389);
-            this.tabStads.TabIndex = 1;
-            this.tabStads.Text = "Stadistics";
-            this.tabStads.UseVisualStyleBackColor = true;
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // sourceDataGridViewTextBoxColumn
             // 
@@ -347,25 +322,7 @@
             // bindingSrcTweets
             // 
             this.bindingSrcTweets.DataSource = typeof(GestTweet.Classes.Tweet);
-            // 
-            // groupBoxPrevious
-            // 
-            this.groupBoxPrevious.Controls.Add(this.buttonOpenPrevious);
-            this.groupBoxPrevious.Location = new System.Drawing.Point(19, 228);
-            this.groupBoxPrevious.Name = "groupBoxPrevious";
-            this.groupBoxPrevious.Size = new System.Drawing.Size(170, 53);
-            this.groupBoxPrevious.TabIndex = 6;
-            this.groupBoxPrevious.TabStop = false;
-            this.groupBoxPrevious.Text = "From previous loads";
-            // 
-            // buttonOpenPrevious
-            // 
-            this.buttonOpenPrevious.Location = new System.Drawing.Point(48, 20);
-            this.buttonOpenPrevious.Name = "buttonOpenPrevious";
-            this.buttonOpenPrevious.Size = new System.Drawing.Size(75, 23);
-            this.buttonOpenPrevious.TabIndex = 0;
-            this.buttonOpenPrevious.Text = "Open ...";
-            this.buttonOpenPrevious.UseVisualStyleBackColor = true;
+            this.bindingSrcTweets.CurrentChanged += new System.EventHandler(this.bindingSrcTweets_CurrentChanged);
             // 
             // MainWindow
             // 
@@ -380,22 +337,17 @@
             this.Text = "GestTweet";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tabControlMain.ResumeLayout(false);
             this.tabPageLoadedTweets.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).EndInit();
-            this.panelRight.ResumeLayout(false);
-            this.groupBoxFromArchive.ResumeLayout(false);
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             this.statusStripMain.ResumeLayout(false);
             this.statusStripMain.PerformLayout();
-            this.groupBoxAPI.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSrcTweets)).EndInit();
-            this.groupBoxPrevious.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -413,10 +365,6 @@
         private System.Windows.Forms.StatusStrip statusStripMain;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusNumTweets;
-        private System.Windows.Forms.Panel panelRight;
-        private System.Windows.Forms.GroupBox groupBoxFromArchive;
-        private System.Windows.Forms.Button ButtonLoadArchiveJS;
-        private System.Windows.Forms.Button ButtonLoadFromZIP;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -433,13 +381,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn userDataGridViewTextBoxColumn;
-        private System.Windows.Forms.GroupBox groupBoxAPI;
-        private System.Windows.Forms.Button buttonStartAPI;
-        private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.TabPage tabStads;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBoxPrevious;
-        private System.Windows.Forms.Button buttonOpenPrevious;
+        private System.Windows.Forms.ToolStripMenuItem loadTweetsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fromjsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fromzipToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fromAPIToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem loadAPIToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fromPreviousLoadsToolStripMenuItem;
     }
 }
 

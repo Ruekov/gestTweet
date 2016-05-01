@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using GestTweet.Classes;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -69,6 +70,18 @@ namespace GestTweet.Classes
                 }
 
 
+                SavedExports.Load();
+
+                SavedExports.Instance.ListOfExports.Add(new SavedExports.GestTweetExport()
+                {
+                    dateOfExport = DateTime.Now,
+                    DirectoryName = m_FileData,
+                    NumOfTweets = jsonResponse.Count(),
+                    typeExport = SavedExports.TypeOfExport.ZIP
+                });
+
+                SavedExports.Save();
+
                 return jsonResponse;
 
 
@@ -80,5 +93,44 @@ namespace GestTweet.Classes
 
         }
 
+        public static List<Tweet> openExportedZip(string filePath)
+        {
+
+            List<Tweet> jsonResponse = new List<Tweet>();
+
+            try
+            {
+
+                var listFiles = Directory.GetFiles(filePath).ToList();
+
+                foreach (var item in listFiles)
+                {
+                    if (Path.GetExtension(item) == ".js")
+                    {
+
+                        using (StreamReader r = new StreamReader(item))
+                        {
+                            string json = r.ReadToEnd();
+
+                            json = json.Substring(json.IndexOf("=") + 1);
+
+                            jsonResponse.AddRange(JsonConvert.DeserializeObject<List<Tweet>>(json));
+
+                        }
+
+                    }
+
+                }
+
+                return jsonResponse;
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
     }
 }

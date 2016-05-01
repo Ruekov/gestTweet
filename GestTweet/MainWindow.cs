@@ -13,6 +13,8 @@ namespace GestTweet
 {
     public partial class MainWindow : Form
     {
+        public object SaveExports { get; private set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -20,7 +22,13 @@ namespace GestTweet
 
         private void buttonJS_Click(object sender, EventArgs e)
         {
-        
+
+            this.LoadFromJS();
+
+        }
+
+        private void LoadFromJS()
+        {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.InitialDirectory = "c:\\";
@@ -33,9 +41,9 @@ namespace GestTweet
                 try
                 {
 
-                   this.bindingSrcTweets.DataSource = OpenFileArchive.OpenFileJSON(openFileDialog1.FileName);
+                    this.bindingSrcTweets.DataSource = OpenFileArchive.OpenFileJSON(openFileDialog1.FileName);
 
-                   this.toolStripStatusNumTweets.Text = "Loaded tweets: " + this.bindingSrcTweets.Count.ToString();
+                    this.toolStripStatusNumTweets.Text = "Loaded tweets: " + this.bindingSrcTweets.Count.ToString();
 
                 }
                 catch (Exception ex)
@@ -45,7 +53,7 @@ namespace GestTweet
             }
         }
 
-        private void buttonZIP_Click(object sender, EventArgs e)
+        private void LoadFromZIP()
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -71,6 +79,11 @@ namespace GestTweet
             }
         }
 
+        private void buttonZIP_Click(object sender, EventArgs e)
+        {
+            this.LoadFromZIP();
+        }
+
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -80,9 +93,11 @@ namespace GestTweet
         {
             this.toolStripStatusNumTweets.Text = "";
 
-            if (Settings.Instance.username != "")
+            Settings.Load();
+
+            if (Settings.Instance.username == "")
             {
-                this.buttonStartAPI.Enabled = false;
+                this.loadAPIToolStripMenuItem.Enabled = false;
             }
 
         }
@@ -114,14 +129,40 @@ namespace GestTweet
 
         private void buttonStartAPI_Click(object sender, EventArgs e)
         {
-            if (Settings.Instance.username != "") {
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            this.LoadFromAPI();
+
+            Cursor.Current = Cursors.Default;
+
+            Application.DoEvents();
+
+        }
+
+        private void LoadFromAPI()
+        {
+            if (Settings.Instance.username != "")
+            {
 
                 try
                 {
 
-                    this.bindingSrcTweets.DataSource = TweetAPI.GetFromAPI();
+                    var tweetsFromAPI = TweetAPI.GetFromAPI();
+
+                    this.bindingSrcTweets.DataSource = tweetsFromAPI;
 
                     this.toolStripStatusNumTweets.Text = "Loaded tweets: " + this.bindingSrcTweets.Count.ToString();
+
+                    string Tempguid = Guid.NewGuid().ToString();
+
+                    var m_File = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Application.ProductName, Tempguid);
+
+                    System.IO.Directory.CreateDirectory(m_File);
+
+                    m_File = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Application.ProductName, Tempguid, "exports.xml");
+
+                    TweetAPI.SaveTweets(m_File, tweetsFromAPI);
 
                 }
                 catch (Exception ex)
@@ -136,6 +177,85 @@ namespace GestTweet
         {
             userAPI window = new userAPI();
             window.ShowDialog();
+
+        }
+
+        private void fromPreviousLoadsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PreviousLoadsForm screen = new PreviousLoadsForm();
+            if (screen.ShowDialog() == DialogResult.OK)
+            {
+                this.bindingSrcTweets.DataSource = screen.LoadedArchive;
+
+
+            }
+        }
+
+        private void fromjsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+
+            this.toolStripStatusNumTweets.Text = "Loading...";
+
+            Application.DoEvents();
+
+            this.LoadFromJS();
+
+            Cursor.Current = Cursors.Default;
+
+            Application.DoEvents();
+        }
+
+        private void fromzipToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+
+            this.toolStripStatusNumTweets.Text = "Loading...";
+
+            Application.DoEvents();
+
+            this.LoadFromZIP();
+
+            Cursor.Current = Cursors.Default;
+
+            Application.DoEvents();
+
+        }
+
+        private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            userAPI window = new userAPI();
+            window.ShowDialog();
+
+        }
+
+        private void loadAPIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+
+            this.toolStripStatusNumTweets.Text = "Loading...";
+
+            Application.DoEvents();
+
+            this.LoadFromAPI();
+
+            Cursor.Current = Cursors.Default;
+
+            Application.DoEvents();
+        }
+
+        private void buttonOpenPrevious_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void bindingSrcTweets_CurrentChanged(object sender, EventArgs e)
+        {
 
         }
     }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace GestTweet.Classes
 {
+    [Serializable()]
     public class Tweet
     {
 
@@ -39,6 +40,8 @@ namespace GestTweet.Classes
         {
             Tweet d = new Tweet();  // explicit conversion
 
+            d.IdStr = b.StatusID.ToString();
+            d.Id = (long)b.StatusID;
             d.CreatedAt = b.CreatedAt.ToString();
             d.Text = b.Text;
 
