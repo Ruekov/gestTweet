@@ -152,5 +152,20 @@ namespace GestTweet.Classes
 
         }
 
+        public static async Task<bool> DeleteTweet(long refid)
+        {
+            try
+            {
+                var twitterCtx = new TwitterContext(auth);
+                Status status = await twitterCtx.DeleteTweetAsync((ulong)refid);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
     }
 }

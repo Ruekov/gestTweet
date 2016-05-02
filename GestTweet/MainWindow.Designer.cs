@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControlMain = new System.Windows.Forms.TabControl();
@@ -57,6 +58,18 @@
             this.createdAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSrcTweets = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.sourceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.entitiesDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.geoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idStrDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdAtDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -64,9 +77,12 @@
             this.tabControlMain.SuspendLayout();
             this.tabPageLoadedTweets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
+            this.tabStads.SuspendLayout();
             this.menuStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSrcTweets)).BeginInit();
+            this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -143,6 +159,8 @@
             // 
             // tabStads
             // 
+            this.tabStads.Controls.Add(this.dataGridView1);
+            this.tabStads.Controls.Add(this.toolStrip1);
             this.tabStads.Location = new System.Drawing.Point(4, 22);
             this.tabStads.Name = "tabStads";
             this.tabStads.Padding = new System.Windows.Forms.Padding(3);
@@ -222,14 +240,14 @@
             // settingsToolStripMenuItem1
             // 
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
-            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
             this.settingsToolStripMenuItem1.Text = "Settings";
             this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem1_Click);
             // 
             // loadAPIToolStripMenuItem
             // 
             this.loadAPIToolStripMenuItem.Name = "loadAPIToolStripMenuItem";
-            this.loadAPIToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadAPIToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.loadAPIToolStripMenuItem.Text = "Load API";
             this.loadAPIToolStripMenuItem.Click += new System.EventHandler(this.loadAPIToolStripMenuItem_Click);
             // 
@@ -324,6 +342,110 @@
             this.bindingSrcTweets.DataSource = typeof(GestTweet.Classes.Tweet);
             this.bindingSrcTweets.CurrentChanged += new System.EventHandler(this.bindingSrcTweets_CurrentChanged);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(994, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Select,
+            this.sourceDataGridViewTextBoxColumn1,
+            this.entitiesDataGridViewTextBoxColumn1,
+            this.geoDataGridViewTextBoxColumn1,
+            this.idStrDataGridViewTextBoxColumn1,
+            this.textDataGridViewTextBoxColumn1,
+            this.idDataGridViewTextBoxColumn1,
+            this.createdAtDataGridViewTextBoxColumn1,
+            this.userDataGridViewTextBoxColumn1});
+            this.dataGridView1.DataSource = this.bindingSrcTweets;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 28);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(994, 358);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // Select
+            // 
+            this.Select.HeaderText = "Select";
+            this.Select.Name = "Select";
+            // 
+            // sourceDataGridViewTextBoxColumn1
+            // 
+            this.sourceDataGridViewTextBoxColumn1.DataPropertyName = "Source";
+            this.sourceDataGridViewTextBoxColumn1.HeaderText = "Source";
+            this.sourceDataGridViewTextBoxColumn1.Name = "sourceDataGridViewTextBoxColumn1";
+            this.sourceDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // entitiesDataGridViewTextBoxColumn1
+            // 
+            this.entitiesDataGridViewTextBoxColumn1.DataPropertyName = "Entities";
+            this.entitiesDataGridViewTextBoxColumn1.HeaderText = "Entities";
+            this.entitiesDataGridViewTextBoxColumn1.Name = "entitiesDataGridViewTextBoxColumn1";
+            this.entitiesDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // geoDataGridViewTextBoxColumn1
+            // 
+            this.geoDataGridViewTextBoxColumn1.DataPropertyName = "Geo";
+            this.geoDataGridViewTextBoxColumn1.HeaderText = "Geo";
+            this.geoDataGridViewTextBoxColumn1.Name = "geoDataGridViewTextBoxColumn1";
+            this.geoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // idStrDataGridViewTextBoxColumn1
+            // 
+            this.idStrDataGridViewTextBoxColumn1.DataPropertyName = "IdStr";
+            this.idStrDataGridViewTextBoxColumn1.HeaderText = "IdStr";
+            this.idStrDataGridViewTextBoxColumn1.Name = "idStrDataGridViewTextBoxColumn1";
+            this.idStrDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // textDataGridViewTextBoxColumn1
+            // 
+            this.textDataGridViewTextBoxColumn1.DataPropertyName = "Text";
+            this.textDataGridViewTextBoxColumn1.HeaderText = "Text";
+            this.textDataGridViewTextBoxColumn1.Name = "textDataGridViewTextBoxColumn1";
+            this.textDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // createdAtDataGridViewTextBoxColumn1
+            // 
+            this.createdAtDataGridViewTextBoxColumn1.DataPropertyName = "CreatedAt";
+            this.createdAtDataGridViewTextBoxColumn1.HeaderText = "CreatedAt";
+            this.createdAtDataGridViewTextBoxColumn1.Name = "createdAtDataGridViewTextBoxColumn1";
+            this.createdAtDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // userDataGridViewTextBoxColumn1
+            // 
+            this.userDataGridViewTextBoxColumn1.DataPropertyName = "User";
+            this.userDataGridViewTextBoxColumn1.HeaderText = "User";
+            this.userDataGridViewTextBoxColumn1.Name = "userDataGridViewTextBoxColumn1";
+            this.userDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,11 +465,16 @@
             this.tabControlMain.ResumeLayout(false);
             this.tabPageLoadedTweets.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).EndInit();
+            this.tabStads.ResumeLayout(false);
+            this.tabStads.PerformLayout();
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             this.statusStripMain.ResumeLayout(false);
             this.statusStripMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSrcTweets)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,6 +517,18 @@
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem loadAPIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fromPreviousLoadsToolStripMenuItem;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sourceDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn entitiesDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn geoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idStrDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn textDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userDataGridViewTextBoxColumn1;
     }
 }
 

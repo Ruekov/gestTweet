@@ -258,5 +258,21 @@ namespace GestTweet
         {
 
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+            foreach (DataGridViewRow item in this.dataGridView1.Rows)
+            {
+
+                if (item.Cells[0].Selected == true)
+                {
+
+                    TweetAPI.DeleteTweet((long)item.Cells[2].Value);
+                   
+                }
+
+            }
+        }
     }
 }
